@@ -38,7 +38,15 @@
     /*
         Sets the supported filetypes for auto-reload on save
     */
-    "markdown_filetypes": [".md", ".markdown", ".mdown"]
+    "markdown_filetypes": [".md", ".markdown", ".mdown"],
+
+    /*
+        Sets an (optional) sub-folder of the system temp folder to generate preview files in.
+
+        null - Create preview files directly in temp
+        string - The name of the sub-folder of temp to create preview files in.
+    */
+    "temp_subfolder": null
 }
 
 

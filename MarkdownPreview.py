@@ -15,7 +15,14 @@ settings = sublime.load_settings('MarkdownPreview.sublime-settings')
 def getTempMarkdownPreviewPath(view):
     " return a permanent full path of the temp markdown preview file "
     tmp_filename = '%s.html' % view.id()
-    tmp_fullpath = os.path.join(tempfile.gettempdir(), tmp_filename)
+    tmp_folder = tempfile.gettempdir()
+    tmp_subfolder = settings.get("temp_subfolder")
+    if tmp_subfolder:
+        # Use a sub-folder of tmp and create it if needed
+        tmp_folder = os.path.join(tempfile.gettempdir(), tmp_subfolder)
+        if not os.path.isdir(tmp_folder):
+            os.makedirs(tmp_folder)
+    tmp_fullpath = os.path.join(tmp_folder, tmp_filename)
     return tmp_fullpath
 
 
